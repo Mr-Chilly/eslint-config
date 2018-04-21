@@ -1,12 +1,12 @@
-# ESLint.Config.SlimmingWorld
+# ESLint.Config
 
-SlimmingWorld Global Javascript linting rules; extending Airbnb, React and A11y rules. Please use this config rather than ESLint.Plugin.SlimmingWorld, this config includes a whole host of sane linting rules, while the plugin simple adds a few specific rules for our component.
+Javascript linting rules; extending Airbnb, React and A11y rules. This config includes a whole host of sane linting rules, while the plugin simple adds a few specific rules for our component.
 
 ---
 ## Installation
 
 ```
-yarn add yarn add https://bitbucket.org/milesbram/slimmingworld.platform.eslintconfig#develop
+yarn add yarn add https://github.com/Mr-Chilly/eslint-config.git
 ```
 
 Package requires these dependancies, which should be installed automatically:
@@ -24,11 +24,10 @@ eslint-plugin-react
 ```
 {
   "parser": "babel-eslint",
-  "extends": "slimmingworld",
+  "extends": "eslint-config",
   "plugins": [
     "import",
-    "react",
-    "slimmingworld"
+    "react"
   ],
   "env": {
     "browser": true,
@@ -55,39 +54,3 @@ In Global, ESLint is able to verify our import via webpack.config.resolve.js. If
     }
   },
 ```
-
-```
- // webpack.config.resolve.js 
- // TODO: This file refs Front end, make reusable
-
- const path = require('path');
-
-module.exports = (buildOption_) => {
-  // this fix is needed because eslint resolver plugin won't pass the buildOption_ argument
-  const buildOption = (typeof buildOption_ === 'function') ? buildOption_ : () => false;
-  return {
-    resolve : {
-      extensions : ['.js', '.json'],
-      modules : [
-        path.join(__dirname, '../../../'),
-        "node_modules"
-      ],
-      alias: Object.assign(
-        {
-          lodash: 'lodash-es',
-          'lodash.isequal': 'lodash-es/isEqual',
-        },
-        buildOption('patch-recompose') ? {
-          'recompose$': 'common/src/client/util/react-render-perf/recomposePatched'
-        } : {}
-      )
-    },
-    resolveLoader: {
-      alias: {
-        'pattern-lib-component-loader': path.resolve(__dirname, '../../pattern-lib-component-loader')
-      }
-    }
-  };
-};
-```
-This webpack config can be passed in a build options config
