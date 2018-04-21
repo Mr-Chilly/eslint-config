@@ -1,0 +1,27 @@
+{
+  "name": "eslint-config-slimmingworld",
+  "version": "1.1.0",
+  "description": "Complete ESLint rules for SlimmingWorld Global Projects, extends Airbnb, react and ESLint-plugin-slimmingworld",
+  "scripts": {
+    "lint": "eslint .",
+    "prepush": "eslint . --cache"
+  },
+  "repository": "git+https://github.com/Mr-Chilly/eslint-config.git",
+  "author": "Daniel Chilvers",
+  "license": "all rights reserved",
+  "dependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.19.1",
+    "eslint-cli": "^1.1.1",
+    "eslint-config-airbnb": "12.0.0",
+    "eslint-config-airbnb-base": "8.0.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^6.3.0",
+    "node-fetch": "^2.1.1"
+  },
+  "devDependencies": {
+    "husky": "^0.13.3"
+  }
+}
