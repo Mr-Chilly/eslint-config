@@ -1,41 +1,25 @@
 # ESLint.Config
 
-Javascript linting rules; extending Airbnb, React and A11y rules. This config includes a whole host of sane linting rules, while the plugin simple adds a few specific rules for our component.
+Javascript linting rules; extending Airbnb, React, Prettier and A11y rules. This config includes a whole host of sane linting rules, while the plugin simple adds a few specific rules for our component.
 
 ---
 ## Installation
 
 ```
-yarn add yarn add https://github.com/Mr-Chilly/eslint-config.git
+yarn add https://github.com/Mr-Chilly/eslint-config.git
 ```
 
-Package requires these dependancies, which should be installed automatically:
+##
 ```
-eslint 
-babel-eslint
-eslint-plugin-import
-eslint-plugin-jsx-a11y
-eslint-plugin-react
-``` 
+// .eslintrc
+module.exports = require('eslint-config/eslint.config.js');
+```
+```
+// prettier.config.js
+module.exports = require('eslint-config/prettier.config.js');
+```
 
----
-
-## .eslintrc
-```
-{
-  "parser": "babel-eslint",
-  "extends": "eslint-config",
-  "plugins": [
-    "import",
-    "react"
-  ],
-  "env": {
-    "browser": true,
-    "node": true
-  }
-}
-```
-This config should sit in the root of your application. Parser & Plugin settings are not availble in sharable ESLint configs, so will need to be included in your application config.
+Thse configs should sit in the root of your application. Parser & Plugin settings are not availble in sharable ESLint configs, so will need to be included in your application config. The Prettier config is not essential, but useful if you'd like to run prettier on other files, or via a different plugin (on commit for example)
 
 That's literally it! Happy linting...
 
